@@ -223,9 +223,6 @@ Como mencionado, o teste será executado com duas instâncias de sua API. Além 
 ### Database
 Como já mencionado no início do documento, você poderá optar por usar Postgres, MySQL, ou MongoDB. Fica a seu critério :)
 
-## Instruções para Configuração/Preparo da Sua Aplicação 
-O seguinte precisa ser configurado para participar do torneio. Se tiver dificuldade com algum dos itens, fique à vontade para me marcar no Twitter com suas dúvidas em [@zanfranceschi](https://twitter.com/zanfranceschi).
-
 ### Arquivo docker-compose
 Sua aplicação será testada em contêineres com docker-compose **através da porta 9999**. A seguir está um exemplo de como deverá ser mais ou menos seu arquivo `docker-compose.yml`.
 
@@ -305,8 +302,7 @@ http {
 }
 ```
 
-### Imagens Docker
-Você notou que o arquivo `docker-compose.yml` aponta para imagens da API que irá desenvolver, então é necessário que estas imagens estejam disponíveis publicamente em algum serviço como o [docker hub](https://hub.docker.com/), por exemplo. Caso contrário, eu não serei capaz de subir os contêineres. Por causa das minhas restrições de tempo, também não irei conseguir construir todas as imagens docker, por isso, novamente, é necessário que as imagens estejam publicamente disponíveis, ok?
+
 
 ### Sobre a Entrega para Participar
 Você precisa fazer o seguinte para participar:
