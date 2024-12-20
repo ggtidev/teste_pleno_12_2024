@@ -4,7 +4,6 @@
 - O "deploy" da API será feito via docker-compose com limites de CPU e memória.
 - O teste será executado em EC2 devidamente configurado e a limitação de CPU e memória será interessante para exercitarmos ambientes com limitações, use a criatividade;
 -
-- Você tem até a meia-noite do dia **22/08** aka `2023-08-22T23:59:59-03:00` para submeter seu PR.
 
 
 ## Endpoints
