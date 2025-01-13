@@ -58,7 +58,7 @@
 
 ## Requisitos Técnicos
 
-- **Framework:** React.js (ou outro framework moderno de frontend, à escolha).
+- **Framework:** Angular(ou outro framework moderno de frontend, à escolha).
 - **Estilo:** Pode usar bibliotecas como **Bootstrap**, **Material UI** ou **Tailwind CSS** para estilização, mas o layout deve ser limpo e responsivo.
 - **Gerenciamento de Estado:** Use **Context API**, **Redux** ou outro gerenciador de estado para lidar com dados compartilhados, se necessário.
 - **Consumo de API:** Utilize `fetch` ou bibliotecas como **Axios** para consumir os endpoints.
