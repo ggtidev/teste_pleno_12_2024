@@ -114,7 +114,7 @@ Note que a resposta é praticamente igual ao payload de criação com o acrésci
 ### Busca de Pessoas
 `GET /pessoas?t=[:termo da busca]`
 
-Dado o `termo da busca`, a resposta deverá ser uma lista que satisfaça o termo informado estar contido nos atributos `apelido`, `nome`, e/ou elementos de `stack`. A busca não precisa ser paginada e poderá retornar apenas os 50 primeiros registros resultantes da filtragem para facilitar a implementação.
+Dado o `termo da busca`, a resposta deverá ser uma lista que satisfaça o termo informado estar contido nos atributos `apelido`, `nome`. A busca não precisa ser paginada e poderá retornar apenas os 50 primeiros registros resultantes da filtragem para facilitar a implementação.
 
 O status code deverá ser sempre 200 - Ok, mesmo para o caso da busca não retornar resultados (vazio).
 
