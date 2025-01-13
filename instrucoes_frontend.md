@@ -3,7 +3,7 @@
 ## Resumo
 
 - O frontend deve consumir os endpoints definidos no teste do backend e apresentar uma interface simples e funcional para interagir com as funcionalidades da API.
-- O projeto deverá ser desenvolvido com **React.js** (ou outro framework moderno de frontend, como Vue.js ou Angular, à sua escolha) e implementado com boas práticas de desenvolvimento frontend.
+- O projeto deverá ser desenvolvido com **Angular** (ou outro framework moderno de frontend, como Vue.js ou React.js, à sua escolha) e implementado com boas práticas de desenvolvimento frontend.
 - O layout não precisa ser visualmente impressionante, mas deve ser funcional, responsivo e intuitivo para o usuário.
 - O deploy será realizado utilizando **Docker**, e a aplicação deverá ser acessível na porta **8080**.
 
