@@ -1,0 +1,9 @@
+.badge {
+  padding: 5px;
+  /* background-color: #28a745;
+  color: white; */
+}
+.badge-success{
+  background-color: #28a745;
+  color: white;
+}

@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* TOASTR BUGFIX */
+#toast-container > div {
+  opacity: 1;
+}
+.toast {
+  font-size: initial !important;
+  border: initial !important;
+  backdrop-filter: blur(0) !important;
+}
+
+.toast-success {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #51A351 !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  padding: 1rem 2rem !important;
+  margin: 1rem !important;
+}
+
+.toast-error {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #BD362F !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  padding: 1rem 2rem !important;
+}
+

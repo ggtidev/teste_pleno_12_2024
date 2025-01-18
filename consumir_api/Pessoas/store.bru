@@ -1,0 +1,20 @@
+meta {
+  name: store
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/pessoas
+  body: json
+  auth: none
+}
+
+body:json {
+   {
+      
+      "apelido" : "josé",
+      "nome" : "José Roberto",
+      "nascimento" : "2000-10-01"
+  }
+}
