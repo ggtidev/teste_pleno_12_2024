@@ -1,0 +1,24 @@
+# docker-compose.yml
+version: '3'
+services:
+    web:
+        container_name: teste_pleno
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./laravel-app:/var/www/html
+# app:
+#     build:
+#         context: .
+#         dockerfile: Dockerfile
+#     volumes:
+#         - ./laravel-app:/var/www/html
+# db:
+#     image: mysql:8.0.30
+#     environment:
+#         MYSQL_ROOT_PASSWORD: root_password
+#         MYSQL_USER: root
+#         MYSQL_DATABASE: teste_pleno
+#     volumes:
+#         - ./mysql-data:/var/lib/mysql

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <button mat-button>Login</button>
+  <button mat-button>Cadastro</button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Home</button>
+  <button mat-menu-item>Sobre</button>
+  <button mat-menu-item>Contato</button>
+</mat-menu>
