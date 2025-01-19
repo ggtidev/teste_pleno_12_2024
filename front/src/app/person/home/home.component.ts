@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.isCreateMode = false;
     this.loadPersons();
 
-    setTimeout(() => (this.successMessage = null), 5000);
+    setTimeout(() => (this.successMessage = null), 2000);
   }
 
   handleUpdatePerson(event: { person: Person; message: string }): void {
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.selectedPerson = null;
     this.successMessage = event.message;
 
-    setTimeout(() => (this.successMessage = null), 5000);
+    setTimeout(() => (this.successMessage = null), 2000);
   }
 
   handleDeletePerson(message: string): void {
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.isDeleteMode = false;
     this.successMessage = message;
 
-    setTimeout(() => (this.successMessage = null), 5000);
+    setTimeout(() => (this.successMessage = null), 2000);
   }
 
   openDeleteModal(id: string): void {
