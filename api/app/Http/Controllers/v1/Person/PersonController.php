@@ -12,7 +12,15 @@ class PersonController extends Controller
 {
     public function index(): JsonResponse
     {
-        $person = Person::query()->paginate(10);
+        $search = request()->query('t');
+
+        $query = Person::query();
+
+        if (!empty($search)) {
+            $query->search($search);
+        }
+
+        $person = $query->paginate(10);
 
         return response()->json($person);
     }
