@@ -1,0 +1,185 @@
+.container
+  max-width: 800px
+  margin: 0 auto
+  padding: 20px
+  font-family: Arial, sans-serif
+
+  @media (max-width: 768px)
+    padding: 10px
+
+  @media (max-width: 440px)
+    padding: 5px
+
+h1
+  text-align: center
+  margin-bottom: 40px
+  font-size: 24px
+
+  @media (max-width: 440px)
+    font-size: 20px
+    margin-bottom: 20px
+
+.actions-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 20px
+  gap: 20px
+
+  @media (max-width: 768px)
+    flex-direction: column
+    gap: 15px
+
+  @media (max-width: 440px)
+    gap: 10px
+
+.search-input
+  width: 45%
+  padding: 10px
+  border: 1px solid #94a3b8
+  border-radius: 5px
+  font-size: 14px
+  color: #1e293b
+  outline: none
+  transition: border-color 0.3s
+
+  &:focus
+    border-color: #007bff
+
+  @media (max-width: 768px)
+    width: 95%
+    margin: 0 auto
+
+  @media (max-width: 440px)
+    font-size: 12px
+    padding: 8px
+
+.add-button
+  padding: 10px 20px
+  background-color: #28a745
+  color: #fff
+  border: none
+  border-radius: 5px
+  font-size: 14px
+  cursor: pointer
+  transition: background-color 0.3s
+
+  &:hover
+    background-color: #218838
+
+  @media (max-width: 440px)
+    padding: 8px 15px
+    font-size: 12px
+
+.person-table
+  width: 100%
+  border-collapse: collapse
+  background-color: #fff
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05)
+  border-radius: 8px
+  overflow: hidden
+
+  thead
+    background-color: #f1f5f9
+
+  th, td
+    text-align: center
+    padding: 10px
+    font-size: 14px
+    color: #1e293b
+    border-bottom: 1px solid #e2e8f0
+
+  th
+    font-weight: bold
+
+  tr:nth-child(even)
+    background-color: #f9fafb
+
+  tr:last-child td
+    border-bottom: none
+
+  .actions
+    display: flex
+    justify-content: center
+    gap: 5px
+
+  @media (max-width: 768px)
+    th, td
+      font-size: 12px
+      padding: 8px
+
+  @media (max-width: 440px)
+    th, td
+      font-size: 11px
+      padding: 6px
+
+.action-button
+  padding: 6px 12px
+  font-size: 13px
+  border: none
+  border-radius: 3px
+  cursor: pointer
+  transition: background-color 0.3s
+
+  &.edit
+    background-color: #007bff
+    color: #fff
+
+    &:hover
+      background-color: #0056b3
+
+  &.delete
+    background-color: #dc3545
+    color: #fff
+
+    &:hover
+      background-color: #a71d2a
+
+  @media (max-width: 440px)
+    padding: 5px
+    font-size: 11px
+
+.success-message
+  background-color: #d4edda
+  border: 1px solid #c3e6cb
+  color: #155724
+  padding: 15px
+  margin-bottom: 20px
+  border-radius: 5px
+  animation: fadeIn 0.3s ease-in
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@media (max-width: 473px) and (min-width: 340px)
+  .container
+    padding: 10px
+
+  .actions-header
+    flex-direction: column
+    align-items: stretch
+    gap: 15px
+
+  .add-button
+    width: 100%
+    max-width: 100%
+    margin: 0 auto
+    padding: 8px
+    font-size: 12px
+
+  .person-table th, .person-table td
+    font-size: 12px
+    padding: 6px
+
+  .actions
+    flex-direction: column
+
+  .action-button
+    width: 100%
+    max-width: 200px
+    margin: 5px auto
+    font-size: 11px
+    padding: 6px
