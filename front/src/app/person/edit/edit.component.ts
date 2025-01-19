@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PersonService } from "../services/person.service";
+import { PersonService } from '../../services/person.service';
 
 @Component({
   selector: 'app-edit',
