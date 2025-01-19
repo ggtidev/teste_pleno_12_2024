@@ -34,6 +34,13 @@ class PersonController extends Controller
         return response()->json($person, ResponseStatusCode::HTTP_CREATED);
     }
 
+    public function show(string $id): JsonResponse
+    {
+        $person = Person::query()->find($id);
+
+        return response()->json($person);
+    }
+
     public function update(Person $person, UpdatePerson $request): JsonResponse
     {
         $validated = $request->validated();
