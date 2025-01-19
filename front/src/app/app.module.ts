@@ -6,6 +6,7 @@ import { HomeComponent } from './person/home/home.component';
 import { ModalComponent } from './modal/modal.component';
 import { EditComponent } from './person/edit/edit.component';
 import {CreateComponent} from "./person/create/create.component";
+import { DeleteComponent } from './person/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {CreateComponent} from "./person/create/create.component";
     HomeComponent,
     ModalComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule

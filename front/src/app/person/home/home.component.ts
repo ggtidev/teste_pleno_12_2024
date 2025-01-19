@@ -1,10 +1,100 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../../services/person.service';
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
-export class HomeComponent {
-  ngOnInit(): void {}
+export class HomeComponent implements OnInit {
+  persons: Person[] = [];
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
+  searchTerm: string = '';
+  isCreateMode: boolean = false;
+  isEditMode: boolean = false;
+  isDeleteMode: boolean = false;
+  selectedPerson: Person | null = null;
+  selectedPersonId: string = '';
+
+  constructor(private personService: PersonService) {}
+
+  ngOnInit(): void {
+    this.loadPersons();
+  }
+
+  handleSavePerson(event: { person: Person; message: string }): void {
+    this.successMessage = event.message;
+    this.isCreateMode = false;
+    this.loadPersons();
+
+    setTimeout(() => (this.successMessage = null), 5000);
+  }
+
+  handleUpdatePerson(updatedPerson: Person): void {
+    const index = this.persons.findIndex(p => p.id === updatedPerson.id);
+    if (index !== -1) {
+      this.persons[index] = updatedPerson;
+    }
+    this.isEditMode = false;
+    this.selectedPerson = null;
+  }
+
+  handleDeletePerson(id: string): void {
+    this.persons = this.persons.filter(person => person.id !== id);
+    this.isDeleteMode = false;
+  }
+
+  openDeleteModal(id: string): void {
+    this.selectedPersonId = id;
+    this.isDeleteMode = true;
+  }
+
+  openEditModal(person: Person): void {
+    this.selectedPerson = { ...person };
+    this.isEditMode = true;
+  }
+
+  openCreateModal(): void {
+    this.selectedPerson = null;
+    this.isCreateMode = true;
+  }
+
+  closeModals(): void {
+    this.isCreateMode = false;
+    this.isEditMode = false;
+    this.isDeleteMode = false;
+    this.selectedPerson = null;
+    this.errorMessage = null;
+    this.successMessage = null;
+  }
+
+  loadPersons(): void {
+    this.personService.getAll().subscribe({
+      next: (data: Person[]) => {
+        this.persons = data;
+        this.errorMessage = null;
+      },
+      error: () => {
+        this.errorMessage = 'Erro ao buscar os dados.';
+      }
+    });
+  }
+
+  searchPersons(): void {
+    if (!this.searchTerm.trim()) {
+      this.loadPersons();
+    } else {
+      this.personService.search(this.searchTerm).subscribe({
+        next: (data: Person[]) => {
+          this.persons = data;
+          this.errorMessage = null;
+        },
+        error: () => {
+          this.errorMessage = 'Erro ao buscar os dados.';
+        }
+      });
+    }
+  }
 }
