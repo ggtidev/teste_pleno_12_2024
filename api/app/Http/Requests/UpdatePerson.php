@@ -18,8 +18,8 @@ class UpdatePerson extends FormRequest
     {
         return [
             'nickname' => 'required|string|max:32|unique:people,nickname,' . $this->route('person')->id,
-            'name' => 'required|string|max:100',
-            'birth' => 'required|string|date|date_format:Y-m-d',
+            'name'     => 'required|string|max:100',
+            'birth'    => 'required|string|date|date_format:Y-m-d',
         ];
     }
 
@@ -28,11 +28,11 @@ class UpdatePerson extends FormRequest
      */
     public function failedValidation(Validator $validator): void
     {
-        if(is_numeric($this->input('name'))) {
+        if (is_numeric($this->input('name'))) {
             throw new HttpResponseException(
                 response()->json([
-                    'error' => true,
-                    'message' => $validator->errors()
+                    'error'   => true,
+                    'message' => $validator->errors(),
                 ], ResponseStatusCode::HTTP_BAD_REQUEST)
             );
         }

@@ -10,8 +10,8 @@ class PersonFactory extends Factory
     {
         return [
             'nickname' => fake()->name,
-            'name' => fake()->name,
-            'birth' => fake()->date,
+            'name'     => fake()->name,
+            'birth'    => fake()->date,
         ];
     }
 }
