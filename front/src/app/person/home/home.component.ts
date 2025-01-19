@@ -44,9 +44,12 @@ export class HomeComponent implements OnInit {
     setTimeout(() => (this.successMessage = null), 5000);
   }
 
-  handleDeletePerson(id: string): void {
-    this.persons = this.persons.filter(person => person.id !== id);
+  handleDeletePerson(message: string): void {
+    this.persons = this.persons.filter(person => person.id !== this.selectedPersonId);
     this.isDeleteMode = false;
+    this.successMessage = message;
+
+    setTimeout(() => (this.successMessage = null), 5000);
   }
 
   openDeleteModal(id: string): void {

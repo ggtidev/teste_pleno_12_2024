@@ -17,7 +17,7 @@ export class DeleteComponent {
   deletePerson() {
     this.personService.delete(this.id).subscribe({
       next: () => {
-        this.onDelete.emit(this.id);
+        this.onDelete.emit(`Pessoa excluída com sucesso! ID: ${this.id}`);
         this.errorMessage = null;
       },
       error: () => {
