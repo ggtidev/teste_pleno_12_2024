@@ -20,7 +20,7 @@ class PersonController extends Controller
             $query->search($search);
         }
 
-        $person = $query->paginate(10);
+        $person = $query->get();
 
         return response()->json($person);
     }

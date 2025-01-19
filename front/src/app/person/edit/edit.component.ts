@@ -35,7 +35,10 @@ export class EditComponent {
 
     this.personService.update(this.person.id, this.person).subscribe({
       next: (updatedPerson) => {
-        this.onUpdate.emit(updatedPerson);
+        this.onUpdate.emit({
+          person: updatedPerson,
+          message: `Pessoa atualizada com sucesso! ID: ${updatedPerson.id}`
+        });
         this.errorMessage = null;
       },
       error: () => {

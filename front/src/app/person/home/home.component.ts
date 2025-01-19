@@ -32,13 +32,16 @@ export class HomeComponent implements OnInit {
     setTimeout(() => (this.successMessage = null), 5000);
   }
 
-  handleUpdatePerson(updatedPerson: Person): void {
-    const index = this.persons.findIndex(p => p.id === updatedPerson.id);
+  handleUpdatePerson(event: { person: Person; message: string }): void {
+    const index = this.persons.findIndex(p => p.id === event.person.id);
     if (index !== -1) {
-      this.persons[index] = updatedPerson;
+      this.persons[index] = event.person;
     }
     this.isEditMode = false;
     this.selectedPerson = null;
+    this.successMessage = event.message;
+
+    setTimeout(() => (this.successMessage = null), 5000);
   }
 
   handleDeletePerson(id: string): void {
