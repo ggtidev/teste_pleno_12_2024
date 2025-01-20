@@ -20,7 +20,8 @@
     <p>Total de pessoas cadastradas: <strong>{{ totalPersons }}</strong></p>
   </div>
 
-  <table class="person-table">
+  <div *ngIf="isLoading" class="spinner"></div>
+  <table *ngIf="!isLoading" class="person-table">
     <thead>
     <tr>
       <th>Id</th>

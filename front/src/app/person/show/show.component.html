@@ -1,4 +1,7 @@
-<div *ngIf="person">
+<div *ngIf="isLoading" class="skeleton-loader">
+  <p>Carregando...</p>
+</div>
+<div *ngIf="!isLoading && person">
   <p><strong>ID:</strong> {{ person.id }}</p>
   <p><strong>Nome:</strong> {{ person.name }}</p>
   <p><strong>Apelido:</strong> {{ person.nickname }}</p>

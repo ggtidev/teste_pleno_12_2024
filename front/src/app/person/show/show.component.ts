@@ -10,6 +10,7 @@ export class ShowComponent implements OnInit {
   @Input() personId!: string;
   person: any;
   errorMessage: string | null = null;
+  isLoading: boolean = true;
 
   constructor(private personService: PersonService) {}
 
@@ -22,9 +23,11 @@ export class ShowComponent implements OnInit {
       next: (data) => {
         this.person = data;
         this.errorMessage = null;
+        this.isLoading = false;
       },
       error: () => {
         this.errorMessage = 'Erro ao carregar os detalhes da pessoa.';
+        this.isLoading = false;
       }
     });
   }

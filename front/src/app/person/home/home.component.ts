@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   selectedPerson: Person | null = null;
   selectedPersonId: string = '';
   totalPersons: number = 0;
+  isLoading: boolean = true;
 
   constructor(private personService: PersonService) {}
 
@@ -91,9 +92,11 @@ export class HomeComponent implements OnInit {
       next: (data: Person[]) => {
         this.persons = data;
         this.errorMessage = null;
+        this.isLoading = false;
       },
       error: () => {
         this.errorMessage = 'Erro ao buscar os dados.';
+        this.isLoading = false;
       }
     });
   }
