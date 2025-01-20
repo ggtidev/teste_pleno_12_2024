@@ -66,6 +66,11 @@ existem três pastas no projeto sendo elas
 `api_docs` - aqui está a collection do Postman juntamente com a environment
 
 
+### Executando projeto 
+
+`docker compose up -d`
+
+O Projeto pode ser executado separadamente
 ### Executando o back 
 
 ```
@@ -83,8 +88,6 @@ cd front
 docker compose up -d --build
 ```
 `http://localhost:8080/`
-
-Tomei a decisão de separar os Docker para deixar cada um com sua responsabilidade
 
 ---
 API Swagger 
