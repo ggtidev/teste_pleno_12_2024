@@ -191,6 +191,21 @@ class PersonController extends Controller
         return response()->json(null, ResponseStatusCode::HTTP_NO_CONTENT);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/v1/count",
+     *     summary="Get total count of persons",
+     *     tags={"Person"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             type="integer",
+     *             example=42
+     *         )
+     *     )
+     * )
+     */
     public function countPerson(): JsonResponse
     {
         $person = Person::query()->count();
