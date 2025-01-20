@@ -6,7 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('person', PersonController::class);
 
-    Route::group(['prefix' => 'person'], function () {
-        Route::get('count', [PersonController::class, 'countPerson']);
-    });
+    Route::get('count', [PersonController::class, 'countPerson'])->name('person.count');
 });
