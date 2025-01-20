@@ -1,0 +1,11 @@
+<div *ngIf="open" class="back-drop">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2>{{ title }}</h2>
+      <button class="close" (click)="onClose()">X</button>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

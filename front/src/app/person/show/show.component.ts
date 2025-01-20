@@ -1,0 +1,34 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { PersonService } from '../../services/person.service';
+
+@Component({
+  selector: 'app-show',
+  templateUrl: './show.component.html',
+  styleUrls: ['./show.component.sass']
+})
+export class ShowComponent implements OnInit {
+  @Input() personId!: string;
+  person: any;
+  errorMessage: string | null = null;
+  isLoading: boolean = true;
+
+  constructor(private personService: PersonService) {}
+
+  ngOnInit(): void {
+    this.getPersonDetails();
+  }
+
+  getPersonDetails(): void {
+    this.personService.show(this.personId).subscribe({
+      next: (data) => {
+        this.person = data;
+        this.errorMessage = null;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.errorMessage = 'Erro ao carregar os detalhes da pessoa.';
+        this.isLoading = false;
+      }
+    });
+  }
+}

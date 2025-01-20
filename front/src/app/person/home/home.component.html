@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>Lista de Pessoas</h1>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <div class="actions-header">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Buscar pessoa..."
+      [(ngModel)]="searchTerm"
+      (input)="searchPersons()"
+    />
+    <button class="add-button" (click)="openCreateModal()">Cadastrar Nova Pessoa</button>
+  </div>
+
+  <div class="count-info">
+    <p>Total de pessoas cadastradas: <strong>{{ totalPersons }}</strong></p>
+  </div>
+
+  <div *ngIf="isLoading" class="spinner"></div>
+  <table *ngIf="!isLoading" class="person-table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Apelido</th>
+      <th>Nome</th>
+      <th>Data de Nascimento</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="persons.length === 0 && searchTerm.trim()">
+      <td colspan="5">Nenhuma pessoa encontrada com o termo "{{ searchTerm }}"</td>
+    </tr>
+    <tr *ngIf="persons.length === 0 && !searchTerm">
+      <td colspan="5">Não existem pessoas cadastradas</td>
+    </tr>
+    <tr *ngFor="let person of persons; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ person.nickname }}</td>
+      <td>{{ person.name }}</td>
+      <td>{{ person.birth }}</td>
+      <td class="actions">
+        <button class="action-button edit" (click)="openEditModal(person)">Editar</button>
+        <button class="action-button delete" (click)="openDeleteModal(person.id)">Excluir</button>
+        <button class="action-button details" (click)="openDetailsModal(person.id)">Detalhes</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <app-modal
+    [open]="isCreateMode || isEditMode || isDeleteMode || isDetailsMode"
+    [title]="isCreateMode ? 'Cadastrar Pessoa' : isEditMode ? 'Editar Pessoa' : isDeleteMode ? 'Excluir Pessoa' : 'Detalhes da Pessoa'"
+    (closeEvent)="closeModals()"
+  >
+    <ng-container *ngIf="isCreateMode">
+      <app-create (onCreate)="handleSavePerson($event)"></app-create>
+    </ng-container>
+    <ng-container *ngIf="isEditMode">
+      <app-edit
+        [person]="selectedPerson"
+        (onUpdate)="handleUpdatePerson($event)"
+        (onCancel)="closeModals()"
+      ></app-edit>
+    </ng-container>
+    <ng-container *ngIf="isDeleteMode">
+      <app-delete
+        [id]="selectedPersonId"
+        (onDelete)="handleDeletePerson($event)"
+        (onCancel)="closeModals()"
+      ></app-delete>
+    </ng-container>
+    <ng-container *ngIf="isDetailsMode">
+      <app-show
+        [personId]="selectedPersonId"
+      ></app-show>
+    </ng-container>
+  </app-modal>
+</div>
