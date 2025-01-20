@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './person/home/home.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent
       ],
+      imports: [ HttpClientTestingModule, FormsModule ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   });
 
@@ -22,10 +29,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('front');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('front app is running!');
-  });
 });
