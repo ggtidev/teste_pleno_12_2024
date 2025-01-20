@@ -59,6 +59,8 @@ services:
   database:
     image: mysql:8.0.40
     container_name: database
+    ports:
+      - ${DB_PORT}:${FORWARD_DB_PORT}
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: person

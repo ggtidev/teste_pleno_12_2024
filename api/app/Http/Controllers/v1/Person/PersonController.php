@@ -190,4 +190,10 @@ class PersonController extends Controller
         $person->delete();
         return response()->json(null, ResponseStatusCode::HTTP_NO_CONTENT);
     }
+
+    public function countPerson(): JsonResponse
+    {
+        $person = Person::query()->count();
+        return response()->json($person);
+    }
 }
