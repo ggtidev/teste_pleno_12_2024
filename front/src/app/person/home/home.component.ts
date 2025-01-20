@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   isCreateMode: boolean = false;
   isEditMode: boolean = false;
   isDeleteMode: boolean = false;
+  isDetailsMode: boolean = false;
   selectedPerson: Person | null = null;
   selectedPersonId: string = '';
 
@@ -52,6 +53,11 @@ export class HomeComponent implements OnInit {
     setTimeout(() => (this.successMessage = null), 2000);
   }
 
+  openDetailsModal(id: string): void {
+    this.selectedPersonId = id;
+    this.isDetailsMode = true;
+  }
+
   openDeleteModal(id: string): void {
     this.selectedPersonId = id;
     this.isDeleteMode = true;
@@ -74,6 +80,7 @@ export class HomeComponent implements OnInit {
     this.selectedPerson = null;
     this.errorMessage = null;
     this.successMessage = null;
+    this.isDetailsMode = false;
   }
 
   loadPersons(): void {

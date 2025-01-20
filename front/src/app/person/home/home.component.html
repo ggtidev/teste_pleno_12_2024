@@ -41,14 +41,15 @@
       <td class="actions">
         <button class="action-button edit" (click)="openEditModal(person)">Editar</button>
         <button class="action-button delete" (click)="openDeleteModal(person.id)">Excluir</button>
+        <button class="action-button details" (click)="openDetailsModal(person.id)">Detalhes</button>
       </td>
     </tr>
     </tbody>
   </table>
 
   <app-modal
-    [open]="isCreateMode || isEditMode || isDeleteMode"
-    [title]="isCreateMode ? 'Cadastrar Pessoa' : isEditMode ? 'Editar Pessoa' : 'Excluir Pessoa'"
+    [open]="isCreateMode || isEditMode || isDeleteMode || isDetailsMode"
+    [title]="isCreateMode ? 'Cadastrar Pessoa' : isEditMode ? 'Editar Pessoa' : isDeleteMode ? 'Excluir Pessoa' : 'Detalhes da Pessoa'"
     (closeEvent)="closeModals()"
   >
     <ng-container *ngIf="isCreateMode">
@@ -67,6 +68,11 @@
         (onDelete)="handleDeletePerson($event)"
         (onCancel)="closeModals()"
       ></app-delete>
+    </ng-container>
+    <ng-container *ngIf="isDetailsMode">
+      <app-show
+        [personId]="selectedPersonId"
+      ></app-show>
     </ng-container>
   </app-modal>
 </div>

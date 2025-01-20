@@ -1,0 +1,8 @@
+<div *ngIf="person">
+  <p><strong>Nome:</strong> {{ person.name }}</p>
+  <p><strong>Apelido:</strong> {{ person.nickname }}</p>
+  <p><strong>Data de Nascimento:</strong> {{ person.birth }}</p>
+</div>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>

@@ -9,6 +9,7 @@ import { EditComponent } from './person/edit/edit.component';
 import {CreateComponent} from "./person/create/create.component";
 import { DeleteComponent } from './person/delete/delete.component';
 import {FormsModule} from "@angular/forms";
+import { ShowComponent } from './person/show/show.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
     ModalComponent,
     CreateComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,
