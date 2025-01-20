@@ -123,4 +123,20 @@ class PersonControllerTest extends TestCase
 
         $response->assertStatus(ResponseAlias::HTTP_BAD_REQUEST);
     }
+
+    #[Test]
+    public function it_should_validate_when_duplicated_nickname(): void
+    {
+        $person = Person::factory()->create();
+
+        $personData = Person::factory()->make()->toArray();
+
+        $response = $this->post(route('person.store'), [
+            'nickname' => $person->nickname,
+            'name' => $personData['name'],
+            'birth' => Carbon::parse($personData['birth'])->format('Y-m-d')
+        ]);
+
+
+    }
 }

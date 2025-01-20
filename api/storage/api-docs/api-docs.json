@@ -1,0 +1,255 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Person API Documentation",
+        "description": "API endpoints for managing person records",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/person": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "List all persons",
+                "operationId": "cfed71b6f358090522001a62a43e18bd",
+                "parameters": [
+                    {
+                        "name": "t",
+                        "in": "query",
+                        "description": "Search term",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Person"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Create a new person",
+                "operationId": "d4b0d0b941cb9d2704ad33acef766214",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Person created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Person"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/person/{id}": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Get person by ID",
+                "operationId": "8561e0bb81191c396b61ce3cc8713e30",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Person ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Person"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Update person by ID",
+                "operationId": "aafac6e5d3ab0d0c612b08ec704e0f5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Person ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Person updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Person"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Delete person by ID",
+                "operationId": "5e13d078199b9b428e3bc451d10120e0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Person ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Person deleted successfully"
+                    },
+                    "404": {
+                        "description": "Person not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Person": {
+                "required": [
+                    "nickname",
+                    "name",
+                    "birth"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "readOnly": true
+                    },
+                    "nickname": {
+                        "type": "string",
+                        "example": "johndoe"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "birth": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "datetime",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "datetime",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "PersonRequest": {
+                "required": [
+                    "nickname",
+                    "name",
+                    "birth"
+                ],
+                "properties": {
+                    "nickname": {
+                        "type": "string",
+                        "example": "johndoe"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "birth": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Person",
+            "description": "Person"
+        }
+    ]
+}
