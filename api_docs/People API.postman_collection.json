@@ -62,14 +62,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/api/v1/person",
+									"raw": "{{base_url}}/api/v1/count",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"person"
+										"count"
 									],
 									"query": [
 										{
@@ -105,7 +105,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nickname\": \"s\",\r\n    \"name\": \"ss\",\r\n    \"birth\": \"ss\"\r\n}",
+									"raw": "{\r\n    \"nickname\": \"Rafaeh\",\r\n    \"name\": \"rafa\",\r\n    \"birth\": \"1999-06-10\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -149,7 +149,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nickname\": \"Rafaelas\",\r\n    \"name\": \"Rei delas\",\r\n    \"birth\": \"2024-02-04\"\r\n}",
+									"raw": "{\r\n    \"nickname\": \"Rafaelasaaa\",\r\n    \"name\": \"Rei dela\",\r\n    \"birth\": \"2024-02-04\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -170,7 +170,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "9e008031-21c9-4360-aae9-d2473f3fa52e"
+											"value": "9e014f5f-bf1c-414b-ac94-21bb0a41743a"
 										}
 									]
 								}
@@ -224,7 +224,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "9e008031-21c9-4360-aae9-d2473f3fa52e"
+											"value": "9e02b49a-0e21-427e-9171-492ffddfa740"
 										}
 									]
 								}
