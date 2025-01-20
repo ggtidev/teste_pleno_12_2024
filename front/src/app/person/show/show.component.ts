@@ -18,7 +18,7 @@ export class ShowComponent implements OnInit {
   }
 
   getPersonDetails(): void {
-    this.personService.getById(this.personId).subscribe({
+    this.personService.show(this.personId).subscribe({
       next: (data) => {
         this.person = data;
         this.errorMessage = null;

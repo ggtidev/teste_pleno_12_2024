@@ -15,7 +15,7 @@ export class PersonService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getById(id: string): Observable<any> {
+  show(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
