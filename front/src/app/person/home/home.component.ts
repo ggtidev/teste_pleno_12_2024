@@ -18,18 +18,20 @@ export class HomeComponent implements OnInit {
   isDetailsMode: boolean = false;
   selectedPerson: Person | null = null;
   selectedPersonId: string = '';
+  totalPersons: number = 0;
 
   constructor(private personService: PersonService) {}
 
   ngOnInit(): void {
     this.loadPersons();
+    this.loadCount();
   }
 
   handleSavePerson(event: { person: Person; message: string }): void {
     this.successMessage = event.message;
     this.isCreateMode = false;
     this.loadPersons();
-
+    this.loadCount();
     setTimeout(() => (this.successMessage = null), 2000);
   }
 
@@ -49,6 +51,7 @@ export class HomeComponent implements OnInit {
     this.persons = this.persons.filter(person => person.id !== this.selectedPersonId);
     this.isDeleteMode = false;
     this.successMessage = message;
+    this.loadCount();
 
     setTimeout(() => (this.successMessage = null), 2000);
   }
@@ -91,6 +94,17 @@ export class HomeComponent implements OnInit {
       },
       error: () => {
         this.errorMessage = 'Erro ao buscar os dados.';
+      }
+    });
+  }
+
+  loadCount(): void {
+    this.personService.count().subscribe({
+      next: (count: number) => {
+        this.totalPersons = count;
+      },
+      error: () => {
+        this.errorMessage = 'Erro ao carregar o contador de pessoas.';
       }
     });
   }

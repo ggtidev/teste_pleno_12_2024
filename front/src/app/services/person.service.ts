@@ -34,6 +34,10 @@ export class PersonService {
   search(term: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?t=${term}`);
   }
+
+  count(): Observable<number> {
+    return this.http.get<number>(`${environment.apiUrl}/count`);
+  }
 }
 
 
