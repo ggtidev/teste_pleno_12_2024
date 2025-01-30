@@ -1,4 +1,4 @@
-# Teste Pleno
+# Teste
 
 Bem-vindo!!
 Este projeto é composto por duas partes principais: Backend e Frontend, cada uma com suas especificações e objetivos bem definidos. Este documento serve como um ponto de partida.
