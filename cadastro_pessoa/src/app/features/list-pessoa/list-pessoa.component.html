@@ -1,0 +1,94 @@
+<div class="container mt-4 card-principal">
+  <div class="row">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary mt-1" routerLink="/cadastroPessoa">
+        Cadastrar Pessoa
+      </button>
+    </div>
+  </div>
+  <hr>
+
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    <input
+      type="text"
+      class="form-control custom-input"
+      placeholder="Buscar..."
+      [(ngModel)]="pesquisarPessoaCadastrada"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <div class="container">
+    <div class="table-responsive"style="border-radius: 10px;">
+      <table class="table table-striped table-bordered">
+        <thead class="table">
+          <tr>
+            <th>Id</th>
+            <th>Apelido</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+            *ngFor="let pessoa of listFiltrada.slice(startIndex, startIndex + pageSize)"
+            (click)="abrirDetalhes(pessoa.id)"
+            style="cursor: pointer;"
+          >
+            <td>{{ pessoa.id }}</td>
+            <td>{{ pessoa.apelido }}</td>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.nascimento | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 mb-1">
+      <span class="badge text-bg-secondary fs-7">
+        <i class="bi bi-list-ol"></i> Total: {{ listFiltrada.length }}
+      </span>
+    </div>
+  
+    <!-- Modal de Detalhes -->
+    <div class="modal fade show d-block" *ngIf="pessoaSelecionada" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detalhes da Pessoa</h5>
+            <button type="button" class="btn-close" (click)="fecharModal()"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Id:</strong> {{ pessoaSelecionada.id }}</p>
+            <p><strong>Apelido:</strong> {{ pessoaSelecionada.apelido }}</p>
+            <p><strong>Nome:</strong> {{ pessoaSelecionada.nome }}</p>
+            <p><strong>Data de Nascimento:</strong> {{ pessoaSelecionada.nascimento | date: 'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="fecharModal()">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Paginação -->
+
+  <div class="d-flex justify-content-center">
+    <nav aria-label="Paginação">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="startIndex === 0">
+          <button class="page-link" (click)="prevPage()" [disabled]="startIndex === 0">Anterior</button>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">Página {{ (startIndex / pageSize) + 1 }} de {{ totalPages() }}</span>
+        </li>
+        <li class="page-item" [class.disabled]="startIndex + pageSize >= listFiltrada.length">
+          <button class="page-link" (click)="nextPage()" [disabled]="startIndex + pageSize >= listFiltrada.length">Próximo</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+    
+</div>
