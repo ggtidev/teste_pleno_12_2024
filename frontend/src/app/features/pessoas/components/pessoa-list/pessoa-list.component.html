@@ -1,0 +1,85 @@
+<app-breadcrumb
+  [items]="[
+    {text: 'Pessoas'}
+  ]"
+></app-breadcrumb>
+
+<app-page-header
+  page-title="Pessoas"
+  button-text="+ Nova Pessoa"
+  button-link="new"
+  button-class="btn-success"
+  [quantidade-registros]="totalRegistros"
+></app-page-header>
+
+<div class="d-flex mb-2 ">
+  <!-- Painel do Filtro -->
+  <div
+    class="card ml-3 flex"
+    style="width: 600px; transition: all 0.3s ease-in-out;">
+    <div
+      class="card-header d-flex justify-content-between align-items-center"
+      (click)="toggleFiltro()"
+      style="cursor: pointer;">
+      <span>Filtro</span>
+      <i class="material-icons">
+        {{ filtroAberto ? 'expand_less' : 'expand_more' }}
+      </i>
+    </div>
+    <div
+      class="card-body"
+      [class.d-none]="!filtroAberto">
+        <div class="form-group">
+          <label for="pesquisar">Pesquisar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pesquisar"
+            #filter
+            placeholder="Digite para pesquisar..."
+          />
+          <button class="btn btn-primary mt-2" (click)="filterResources(filter.value)">Pesquisar</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="loading; else loadedContent">
+  <!-- Skeleton Loader -->
+  <div class="row">
+    <div class="col-md-3" *ngFor="let _ of [1, 2, 3, 4, 5]">
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+</div>
+<ng-template #loadedContent>
+  <!-- Verifica se não há recursos -->
+  <div *ngIf="resources.length === 0" class="row">
+    <div class="col-md-3 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Nenhuma pessoa encontrada</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exibe os recursos quando há pessoas -->
+  <div *ngIf="resources.length > 0" class="row">
+    <div class="col-md-3 mb-3" style="cursor: pointer;" *ngFor="let pessoa of resources">
+      <div class="card h-100"  [routerLink]="['/pessoas', pessoa.id]">
+        <div class="card-body">
+          <span class="id">{{pessoa.id}}</span>
+          <h5 class="card-title">{{ pessoa.nome }}</h5>
+          <h6 class="card-subtitle text-muted">{{ pessoa.apelido }}</h6>
+          <hr class="m-1">
+          <p class="card-text">
+            <span class="label-nascimento">Data de Nascimento:</span><br />
+            <small>{{ pessoa.nascimento | dateFormat }}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

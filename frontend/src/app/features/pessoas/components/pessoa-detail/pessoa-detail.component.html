@@ -1,0 +1,28 @@
+<app-breadcrumb
+  [items]="[
+    {text: 'Pessoas', link: '/pessoas'},
+    {text: 'Detalhes: ' + pessoa.nome}
+  ]"
+></app-breadcrumb>
+
+<div class="row mb-4">
+  <div class="col-md-9"></div>
+  <div class="col-md-3 text-right" >
+    <a [routerLink]="['/pessoas']" class="btn btn-light"><< Voltar</a>
+  </div>
+</div>
+<div class="card">
+
+
+  <div class="card-body">
+    <span class="id">{{pessoa.id}}</span>
+    <h5 class="card-title">{{pessoa.nome}}</h5>
+    <h6 class="card-subtitle text-muted">{{pessoa.apelido}}</h6>
+    <hr class="m-1">
+    <p class="card-text">
+      <span class="label-nascimento">Data de Nascimento:</span><br />
+      <small>{{pessoa.nascimento | dateFormat}}</small>
+    </p>
+    </div>
+</div>
+
